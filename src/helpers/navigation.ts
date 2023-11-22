@@ -23,6 +23,6 @@ export const navItems: Navbar[] = [
   {
     name: "Demo",
     link: "/demo",
-    id: 2,
+    id: 3,
   },
 ];

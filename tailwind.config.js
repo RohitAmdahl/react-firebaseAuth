@@ -5,6 +5,7 @@ export default {
     extend: {
       maxWidth: {
         logo: "70px",
+        pic: "570px",
       },
     },
   },

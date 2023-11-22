@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 
 import logo from "../assets/logo.png";
-import { navItems } from "../helpers/navigation";
+import { Navbar, navItems } from "../helpers/navigation";
 
 const Navbar = () => {
   return (
@@ -13,12 +13,11 @@ const Navbar = () => {
       </div>
       <div>
         <nav className="flex justify-between items-baseline gap-7 text-lg font-sans font-semibold">
-          {navItems.map((items) => {
+          {navItems.map((items: Navbar) => {
             return (
               <div className="flex " key={items.id}>
                 <NavLink className="px-2" to={items.link}>
-                  {" "}
-                  {items.name}{" "}
+                  {items.name}
                 </NavLink>
               </div>
             );

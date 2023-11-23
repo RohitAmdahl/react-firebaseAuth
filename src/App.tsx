@@ -10,7 +10,7 @@ const ContactPage = lazy(() => import("./pages/Contact"));
 
 function App() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Suspense
         fallback={
           <div className="flex justify-center items-center mt-4 pt-10">
@@ -36,7 +36,7 @@ function App() {
           </Route>
         </Routes>
       </Suspense>
-    </>
+    </div>
   );
 }
 

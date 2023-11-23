@@ -5,7 +5,13 @@ export default {
     extend: {
       maxWidth: {
         logo: "70px",
-        pic: "570px",
+        pic: "470px",
+      },
+      colors: {
+        text: "#100118",
+        heading: "#6704ff",
+        buttonBg: "#b2aeff",
+        hover: "#cac7ff",
       },
     },
   },

@@ -1,5 +1,5 @@
 
-# React + TypeScript + Vite + IFC VISION
+# React + TypeScript + Vite
 
 ## IFC VISION 
 - Architectural Insight with Vision: A New Era in IFC Viewing. more details coming......

@@ -12,7 +12,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div>
-        <nav className="flex justify-between items-baseline gap-7 text-lg font-sans font-semibold">
+        <nav className="flex justify-between items-baseline gap-7 text-sm font-sans font-semibold">
           {navItems.map((items: Navbar) => {
             return (
               <div className="flex " key={items.id}>

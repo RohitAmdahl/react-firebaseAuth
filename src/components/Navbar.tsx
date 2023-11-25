@@ -16,7 +16,7 @@ const Navbar = () => {
           {navItems.map((items: Navbar) => {
             return (
               <div className="flex " key={items.id}>
-                <NavLink className="px-2 text-text" to={items.link}>
+                <NavLink className="px-2 text-lg text-text" to={items.link}>
                   {items.name}
                 </NavLink>
               </div>

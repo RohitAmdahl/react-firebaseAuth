@@ -30,7 +30,7 @@ const HomePage = () => {
         </div>
         <div className="flex justify-center items-center m-4">
           <Link
-            className="px-7 py-3 flex justify-center items-center gap-4 bg-buttonBg font-bold rounded-md shadow-xl text-text hover:bg-hover  hover:transition-all hover:ease-in-out duration-200  hover:border-heading"
+            className="px-7 py-2 flex justify-center items-center gap-4 bg-buttonBg font-bold rounded-md shadow-xl text-text hover:bg-hover  hover:transition-all hover:ease-in-out duration-200  hover:border-heading"
             to="/demo"
           >
             <BsCloudUpload size={25} /> Upload IFC
@@ -42,5 +42,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-// w-full my-8 md:py-6 md:flex md:justify-center md:items-center md:max-w-xs text-center

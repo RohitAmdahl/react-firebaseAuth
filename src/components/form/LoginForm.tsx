@@ -1,6 +1,7 @@
 import { FcGoogle } from "react-icons/fc";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+
 const loginSchema = Yup.object({
   email: Yup.string()
     .email("Invalid email address")
@@ -8,20 +9,18 @@ const loginSchema = Yup.object({
   password: Yup.string().required("Password is required"),
 });
 
-type formValue = {
-  email: string;
-  password: string;
-};
-
 const initialValues: formValue = {
   email: "",
   password: "",
 };
 
+type formValue = {
+  email: string;
+  password: string;
+};
+
 type LoginFormProps = {
   onSubmit: (values: formValue) => void;
-  emailLabel: string;
-  passwordLabel: string;
   emailPlaceholder: string;
   passwordPlaceholder: string;
 };
@@ -37,16 +36,10 @@ const LoginForm: React.FC<LoginFormProps> = () => {
     });
 
   return (
-    <div className=" container max-w-lg mx-auto">
+    <div className="container max-w-lg mx-auto">
       <div className="rounded px-8 pt-6 pb-8 mb-4">
-        <div className=" ">
-          <h1 className="text-xl font-serif font-semibold">Log In</h1>
-        </div>
-        <form
-          action=""
-          className=" px-8 pt-6 pb-8 mb-4"
-          onSubmit={handleSubmit}
-        >
+        <h1 className="text-xl font-serif font-semibold uppercase">Log In</h1>
+        <form className=" px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
           <div className=" mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"

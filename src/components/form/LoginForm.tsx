@@ -1,5 +1,12 @@
 import { FcGoogle } from "react-icons/fc";
 import { useFormik } from "formik";
+import * as Yup from "yup";
+const loginSchema = Yup.object({
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  password: Yup.string().required("Password is required"),
+});
 
 type formValue = {
   email: string;
@@ -11,13 +18,23 @@ const initialValues: formValue = {
   password: "",
 };
 
-const LoginForm = () => {
-  const Formik = useFormik({
-    initialValues: initialValues,
-    onSubmit: (values) => {
-      console.log(values);
-    },
-  });
+type LoginFormProps = {
+  onSubmit: (values: formValue) => void;
+  emailLabel: string;
+  passwordLabel: string;
+  emailPlaceholder: string;
+  passwordPlaceholder: string;
+};
+
+const LoginForm: React.FC<LoginFormProps> = () => {
+  const { values, errors, handleBlur, touched, handleChange, handleSubmit } =
+    useFormik({
+      initialValues: initialValues,
+      validationSchema: loginSchema,
+      onSubmit: (values) => {
+        console.log(values);
+      },
+    });
 
   return (
     <div className=" container max-w-lg mx-auto">
@@ -25,7 +42,11 @@ const LoginForm = () => {
         <div className=" ">
           <h1 className="text-xl font-serif font-semibold">Log In</h1>
         </div>
-        <form action="" className=" px-8 pt-6 pb-8 mb-4">
+        <form
+          action=""
+          className=" px-8 pt-6 pb-8 mb-4"
+          onSubmit={handleSubmit}
+        >
           <div className=" mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
@@ -40,7 +61,13 @@ const LoginForm = () => {
               name="email"
               id="name"
               placeholder="email"
+              value={values.email}
+              onBlur={handleBlur}
+              onChange={handleChange}
             />
+            {errors.email && touched.email ? (
+              <p className="text-red-500"> {errors.email} </p>
+            ) : null}
           </div>
           <div className=" mb-6">
             <label
@@ -56,15 +83,27 @@ const LoginForm = () => {
               name="password"
               id="password"
               placeholder="password"
+              value={values.password}
+              onBlur={handleBlur}
+              onChange={handleChange}
             />
+            {errors.password && touched.password ? (
+              <p className="text-red-500"> {errors.password} </p>
+            ) : null}
           </div>
           <div className="p-4">
-            <button className=" w-full py-2 flex justify-center items-center gap-4 bg-buttonBg font-bold rounded-md shadow-xl text-text hover:bg-hover  hover:transition-all hover:ease-in-out duration-200 text-sm uppercase  hover:border-heading cursor-pointer">
+            <button
+              type="submit"
+              className=" w-full py-2 flex justify-center items-center gap-4 bg-buttonBg font-bold rounded-md shadow-xl text-text hover:bg-hover  hover:transition-all hover:ease-in-out duration-200 text-sm uppercase  hover:border-heading cursor-pointer"
+            >
               Log In
             </button>
           </div>
           <div className="p-4">
-            <button className="flex justify-center items-center gap-4 mb-3  w-full rounded px-6 pb-2 pt-2.5 text-sm font-medium uppercase leading-normal border-2 mt-6 hover:border-heading cursor-pointer">
+            <button
+              type="submit"
+              className="flex justify-center items-center gap-4 mb-3  w-full rounded px-6 pb-2 pt-2.5 text-sm font-medium uppercase leading-normal border-2 mt-6 hover:border-heading cursor-pointer"
+            >
               <span>
                 <FcGoogle size={20} />
               </span>

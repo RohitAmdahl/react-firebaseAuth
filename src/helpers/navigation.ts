@@ -16,7 +16,7 @@ export const navItems: Navbar[] = [
     id: 1,
   },
   {
-    name: "Lon In",
+    name: "Log In",
     link: "/login",
     id: 2,
   },

@@ -1,9 +1,10 @@
-import { FcGoogle } from "react-icons/fc";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/firebase";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 const userSchema = Yup.object({
   email: Yup.string()
@@ -29,6 +30,8 @@ type registerFormProps = {
 };
 
 const RegisterForm: React.FC<registerFormProps> = () => {
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
   const navigate = useNavigate();
   const { values, errors, handleBlur, touched, handleChange, handleSubmit } =
     useFormik({
@@ -37,12 +40,23 @@ const RegisterForm: React.FC<registerFormProps> = () => {
       onSubmit: async (values, action) => {
         console.log(values);
         try {
-          await createUserWithEmailAndPassword(
+          const userSignUp = await createUserWithEmailAndPassword(
             auth,
             values.email,
             values.password
           );
-          navigate("/demo");
+          const user = userSignUp.user;
+
+          if (user) {
+            setSuccessMessage("Account created successfully");
+
+            setTimeout(() => {
+              setSuccessMessage(null);
+            }, 5000);
+          }
+          setTimeout(() => {
+            navigate("/login");
+          }, 5000);
         } catch (error) {
           console.log(error);
         }
@@ -53,8 +67,13 @@ const RegisterForm: React.FC<registerFormProps> = () => {
 
   return (
     <div className="container max-w-lg mx-auto">
+      {successMessage && (
+        <div className="text-green-800 text-center font-bold mb-4">
+          {successMessage}
+        </div>
+      )}
       <div className="rounded px-8 pt-6 pb-8 mb-4">
-        <h1 className="text-xl font-serif font-semibold uppercase">Log In</h1>
+        <h1 className="text-xl font-serif font-semibold uppercase">Sign up</h1>
         <form className=" px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
           <div className=" mb-4">
             <label
@@ -105,19 +124,19 @@ const RegisterForm: React.FC<registerFormProps> = () => {
               type="submit"
               className=" w-full py-2 flex justify-center items-center gap-4 bg-buttonBg font-bold rounded-md shadow-xl text-text hover:bg-hover  hover:transition-all hover:ease-in-out duration-200 text-sm uppercase  hover:border-heading cursor-pointer"
             >
-              Log In
+              Sign Up
             </button>
           </div>
-          <div className="p-4">
-            <button
-              type="submit"
-              className="flex justify-center items-center gap-4 mb-3  w-full rounded px-6 pb-2 pt-2.5 text-sm font-medium uppercase leading-normal border-2 mt-6 hover:border-heading cursor-pointer"
+          <div className="font-serif text-center uppercase font-bold text-heading">
+            <p>Already have an account? </p>
+          </div>
+          <div className="font-serif flex justify-center items-center pt-6 pb-2 mb-4">
+            <Link
+              className=" text-heading border-b-4 border-violet-800 hover:text-text text-xl font-serif font-semibold uppercase"
+              to="/login"
             >
-              <span>
-                <FcGoogle size={20} />
-              </span>
-              Log In with Google Account
-            </button>
+              Log in
+            </Link>
           </div>
         </form>
       </div>

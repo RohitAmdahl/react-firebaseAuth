@@ -7,7 +7,7 @@ const FactPage = lazy(() => import("./pages/Faq"));
 const RegisterForm = lazy(() => import("./pages/SignUp"));
 const Demo = lazy(() => import("./pages/Demo"));
 const ContactPage = lazy(() => import("./pages/Contact"));
-
+const LogIn = lazy(() => import("./pages/LogIN"));
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -30,7 +30,8 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="/faq" element={<FactPage />} />
-            <Route path="/register" element={<RegisterForm />} />
+            <Route path="/signup" element={<RegisterForm />} />
+            <Route path="/login" element={<LogIn />} />
             <Route path="/demo" element={<Demo />} />
             <Route path="/contact" element={<ContactPage />} />
           </Route>

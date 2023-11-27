@@ -1,8 +1,11 @@
 import { FcGoogle } from "react-icons/fc";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../config/firebase";
+import { useNavigate } from "react-router-dom";
 
-const loginSchema = Yup.object({
+const userSchema = Yup.object({
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),
@@ -19,19 +22,32 @@ type formValue = {
   password: string;
 };
 
-type LoginFormProps = {
+type registerFormProps = {
   onSubmit: (values: formValue) => void;
-  emailPlaceholder: string;
-  passwordPlaceholder: string;
+  email: string;
+  password: string;
 };
 
-const LoginForm: React.FC<LoginFormProps> = () => {
+const RegisterForm: React.FC<registerFormProps> = () => {
+  const navigate = useNavigate();
   const { values, errors, handleBlur, touched, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialValues,
-      validationSchema: loginSchema,
-      onSubmit: (values) => {
+      validationSchema: userSchema,
+      onSubmit: async (values, action) => {
         console.log(values);
+        try {
+          await createUserWithEmailAndPassword(
+            auth,
+            values.email,
+            values.password
+          );
+          navigate("/demo");
+        } catch (error) {
+          console.log(error);
+        }
+
+        action.resetForm();
       },
     });
 
@@ -109,4 +125,4 @@ const LoginForm: React.FC<LoginFormProps> = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

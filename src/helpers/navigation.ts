@@ -16,8 +16,8 @@ export const navItems: Navbar[] = [
     id: 1,
   },
   {
-    name: "Log In",
-    link: "/login",
+    name: "Sign In",
+    link: "/register",
     id: 2,
   },
   {

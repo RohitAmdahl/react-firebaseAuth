@@ -16,8 +16,8 @@ export const FooterItems: FooterBar[] = [
     id: 1,
   },
   {
-    name: "Log In",
-    link: "/login",
+    name: "Sign In",
+    link: "/register",
     id: 2,
   },
 ];

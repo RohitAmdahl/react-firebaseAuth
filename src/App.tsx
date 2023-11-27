@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import { Hourglass } from "react-loader-spinner";
 const HomePage = lazy(() => import("./pages/Home"));
 const FactPage = lazy(() => import("./pages/Faq"));
-const LogIn = lazy(() => import("./pages/Login"));
+const RegisterForm = lazy(() => import("./pages/SignUp"));
 const Demo = lazy(() => import("./pages/Demo"));
 const ContactPage = lazy(() => import("./pages/Contact"));
 
@@ -30,7 +30,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="/faq" element={<FactPage />} />
-            <Route path="/login" element={<LogIn />} />
+            <Route path="/register" element={<RegisterForm />} />
             <Route path="/demo" element={<Demo />} />
             <Route path="/contact" element={<ContactPage />} />
           </Route>

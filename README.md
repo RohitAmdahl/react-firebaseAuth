@@ -24,7 +24,7 @@ git clone https://github.com/RohitAmdahl/react-firebaseAuth.git
 
 ```bash
 cd react-firebaseAuth
-yarn install
+yarn or npm install
 
 ```
 

@@ -10,19 +10,15 @@ export const navItems: Navbar[] = [
     link: "/",
     id: 0,
   },
-  {
-    name: "Faq",
-    link: "/faq",
-    id: 1,
-  },
+
   {
     name: "Sign Up",
     link: "/signup",
-    id: 2,
+    id: 1,
   },
   {
     name: "Demo",
     link: "/demo",
-    id: 3,
+    id: 2,
   },
 ];

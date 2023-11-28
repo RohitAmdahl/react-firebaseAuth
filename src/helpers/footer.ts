@@ -10,14 +10,10 @@ export const FooterItems: FooterBar[] = [
     link: "/contact",
     id: 0,
   },
-  {
-    name: "Faq",
-    link: "/faq",
-    id: 1,
-  },
+
   {
     name: "Sign Up",
     link: "/signup",
-    id: 2,
+    id: 1,
   },
 ];

@@ -28,7 +28,7 @@ type loginFormProps = {
   password: string;
 };
 
-const LoginForm = () => {
+const LoginForm: React.FC<loginFormProps> = () => {
   const navigate = useNavigate();
   const { values, errors, handleBlur, touched, handleChange, handleSubmit } =
     useFormik({
@@ -49,14 +49,13 @@ const LoginForm = () => {
         } catch (error) {
           console.log(error);
         }
-
         action.resetForm();
       },
     });
   const signINGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
-      navigate("/login");
+      navigate("/demo");
     } catch (error) {
       console.log(error);
     }

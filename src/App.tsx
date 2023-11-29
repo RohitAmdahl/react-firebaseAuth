@@ -5,7 +5,7 @@ import { Hourglass } from "react-loader-spinner";
 const HomePage = lazy(() => import("./pages/Home"));
 const RegisterForm = lazy(() => import("./pages/SignUp"));
 const Demo = lazy(() => import("./pages/Demo"));
-const ContactPage = lazy(() => import("./pages/Contact"));
+
 const LogIn = lazy(() => import("./pages/LogIN"));
 function App() {
   return (
@@ -31,7 +31,6 @@ function App() {
             <Route path="/signup" element={<RegisterForm />} />
             <Route path="/login" element={<LogIn />} />
             <Route path="/demo" element={<Demo />} />
-            <Route path="/contact" element={<ContactPage />} />
           </Route>
         </Routes>
       </Suspense>

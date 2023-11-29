@@ -26,7 +26,7 @@ const Footer = () => {
           </div>
           <div className="flex flex-col p-2">
             <span>Project by Rohit kumar Amdahl</span>
-            <span>&copy; IFC VISION CONCEPT</span>
+            <span>&copy; Firebase Project Auth</span>
           </div>
         </div>
       </footer>

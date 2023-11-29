@@ -6,12 +6,6 @@ export type FooterBar = {
 
 export const FooterItems: FooterBar[] = [
   {
-    name: "Contact",
-    link: "/contact",
-    id: 0,
-  },
-
-  {
     name: "Sign Up",
     link: "/signup",
     id: 1,
